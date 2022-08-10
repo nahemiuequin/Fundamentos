@@ -1,0 +1,13 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+using namespace std;
+void main() 
+{
+	float base,altura, area;
+	cout<<"Por favor ingrese la base: "; cin>>base;
+	cout<<"Por favor ingrese la altura: "; cin>>altura;
+	area= (base*altura)/2;
+	cout<<" El area del triangulo es: "<<area<<endl;
+	getch();
+}
