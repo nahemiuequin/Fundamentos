@@ -1,0 +1,44 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+
+using namespace std;
+
+void main (){
+
+	float c1,c2,c3,diferencia,promedio,may,men;
+	cout<<"Ingresar cantidad: ";
+	cin>>c1;
+	cout<<"Ingresar cantidad: ";
+	cin>>c2;
+	cout<<"Ingresar cantidad: ";
+	cin>>c3;
+	may=c1;
+	men=c1;
+	if (may<c2)
+		may=c2;
+	if (men>c2)
+		men=c2;
+	if (may<c3)
+		may=c3;
+	if (men>c3)
+		men=c3;
+	diferencia=may-men;
+	promedio= (c1+c2+c3-may)/2; //promedio sin el mayor
+	//promedio= (c1+c2+c3-men)/2; /promedio sin el menor
+	//promedio= (c1+c2+c3)/3;
+
+	cout<<"La diferencia de mayor y menor es: "<<diferencia<<endl;
+	//cout<<"La diferencia del mayor con c1 es: "<<may - c1<<endl;
+	//cout<<"La diferencia del mayor con c2 es: "<<may - c2<<endl;
+	//cout<<"La diferencia del mayor con c3 es: "<<may - c3<<endl;
+	cout<<"El promedio es: "<<promedio;
+	cout<<"La diferencia del primer numero con el promedio es: "<<abs(c1-promedio)<<endl; //abs = valor absoluto
+	cout<<"La diferencia del segundo numero con el promedio es: "<<abs(c2-promedio)<<endl;
+	cout<<"La diferencia del tercer numero con el promedio es: "<<abs(c3-promedio)<<endl;
+
+	getch();
+
+	
+	}
