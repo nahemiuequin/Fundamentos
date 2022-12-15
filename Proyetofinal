@@ -1,0 +1,218 @@
+#include <iostream>
+#include <string>
+#include "conio.h"
+#include <stdlib.h>
+#define NMAX 25
+
+using namespace std;
+int menu();//--
+int menu(float monto);
+void pago_efec(float monto);
+void pago_QR(float monto);
+void pago_trans(float monto);
+void pago_tar(float monto);
+void pagar(int op, float monto);
+void llenar(int a,string DB[], int DA[]);//--
+void mostrar(string DB[], int DA[]);//--
+
+
+int main()
+{
+    //comienza 
+    string const contr= "fbentuhogar";
+    string usuario,contrasenha;
+    int intentos=0;
+    cout<<"***************************************************"<<endl;
+    cout<<"       Le damos la bienvenida a Fast Beauty!"         <<endl;
+    cout<<"***************************************************"<<endl<<endl;
+    cout<<" Si ya tiene usuario, por favor ingreselo aqui: ";
+    cin>>usuario;
+    
+    do{
+        
+        intentos=intentos+1;
+        cout<<"Por favor, ingrese la contraseña: ";
+        cin>>contrasenha;
+        if(intentos>=2){
+        cout<<"Usted va "<<intentos<<" intentos."<<endl;
+    cout<<"Dejenos saber si necesita ayuda, nos pondremos en contacto :)"<<endl<<endl; 
+        }
+        else{
+            cout<<"Usted va "<<intentos<<" intentos."<<endl;
+    
+        }
+    
+    } while (contrasenha.compare(contr));
+
+  //termina 
+  //comienza 
+    int N=0,b;
+	string DB[5] = {"Manicure y pedicure", "Masajes", "Maquillaje para eventos", "Depilacion", "Tratamientos faciales"}; 
+	int DA[5] = {100,100,100,100,100};
+	int opcion = 0;
+	while(opcion !=7 ){   
+		opcion = menu(); 
+		switch(opcion){
+		case 1:
+			llenar(0,DB,DA);
+			system ("CLS");
+			system("pause");
+			break;
+		case 2:
+			llenar(1,DB,DA);
+			break;
+		case 3:
+			llenar(2,DB,DA);
+			break;
+		case 4:
+			llenar(3,DB,DA);
+			break;
+		case 5:
+			llenar(4,DB,DA);
+			break;
+		case 6:
+			mostrar(DB,DA);
+		break;	
+		}
+	}
+	
+	//termina 
+
+//main 
+float monto=123;// es el costo del servicio realizado que lo envian los otros programas.
+    int op, cont;
+    do {
+    op=menu(monto);
+    cout<<endl<<"Para salir ingrese 9:  ";
+    cin>>cont;
+    }while(cont!=9);
+   return op;
+    
+    
+
+   return 0;
+}
+//termina
+//comienza 
+int menu(){
+	int op; 
+	cout << "      MENU DE OPCIONES" << endl;
+	cout << "1. Manicure y pedicure" << endl;
+	cout << "2. Masajes " << endl;
+	cout << "3. Maquillaje para eventos  " << endl;
+	cout << "4. Depilacion" << endl;
+	cout << "5. Tratamientos faciales" << endl;
+	cout << "6. Servicio que pidio" << endl;
+	cout << "7. Fin" << endl;
+	cout << "" << endl;
+	cout << "      Elija opcion? " << endl;
+	cin >> op;
+	return op;
+}
+
+void llenar(int a,string DB[], int DA[])
+{
+	system ("CLS");
+	DA[a]=a;
+	cout << "Se registro el servicio" << endl;
+	system("pause");
+	system ("CLS");
+}
+
+void mostrar(string DB[], int DA[])
+{
+	system ("CLS");
+	cout << "Producto que pidio" << endl;
+	cout << "----------------------------------------" << endl;
+	for(int i=0;i<5;i++)
+	{
+		if(DA[i]<100)
+		{
+			cout <<DB[i]<<endl;
+		}
+		
+	}
+	system("pause");
+	system ("CLS");
+}
+//termina 
+//comienza 
+int menu(float monto){
+	//creamos el menu y pedimos un valor para enviar al main
+	int op; 
+	
+	
+	do {
+	cout << "      MENU DE OPCIONES" << endl;
+	cout << "1. Pago por efectivo" << endl;
+	cout << "2. Pago con QR " << endl;
+	cout << "3. Pago con transferencia bancaria" << endl;
+	cout << "4. Pago con tarjeta " << endl;
+	cout << "5. Salir" << endl;
+	cout << "" << endl;
+	cout << "      Elija una opcion " << endl;
+	cin >> op;
+	
+   }while (op<1&&op>5);
+pagar(op, monto);
+ 
+ return 0;
+}
+void pagar(int op, float monto)
+{
+cout<<"Entre a pagar "<<op<<endl;
+getch();
+switch (op)
+{
+    case 1:
+        pago_efec(monto);
+        getch();
+        break;
+    case 2:
+        pago_QR(monto);
+          break;
+    case 3:
+        pago_trans(monto);
+          break;
+    case 4:
+        pago_tar(monto);
+          break;
+    case 5:
+        cout<<"Gracias por su preferencia";
+        getch();
+        
+}
+
+}
+
+void pago_efec(float monto)
+{
+    cout<<"Entre a pagar "<<endl;
+    cout << "pago efectivo"<<endl;
+    cout<<"El monto a cancelar es: "<<monto;
+   getch();
+}
+void pago_QR(float monto)
+{   
+     //lo guardo como link y ahi apareceria la imagen del QR
+     // system("MIQR.JPG")
+    cout<<"QR en proceso";
+    cout<<"El monto a cancelar es: "<<monto;
+  getch();
+}
+void pago_trans(float monto)
+{
+    cout<<"Banco: Banco Economico"<<endl;
+    cout<<"Numero de cuenta: 2022111494"<<endl;
+    cout<<"Nombre: FAST BEAUTY"<<endl;
+    cout<<"El monto a cancelar es: "<<monto;
+    
+   getch();
+}
+void pago_tar(float monto)
+{
+    cout<<"Pago con tarjeta en proceso"<<endl;
+
+    cout<<"El monto a cancelar es: "<<monto;
+    
+}
